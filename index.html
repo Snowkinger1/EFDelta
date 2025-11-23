@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="shortcut icon" href="delta.png" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Система ситуаційної обізнаності ДЕЛЬТА (DELTA)</title>
+<style>
+  :root{
+    --bg:#222733;
+    --panel:#121521;
+    --muted:#9aa3b2;
+    --accent:#3b6fe6;
+    --input:#1b2430;
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  html,body{height:75%;margin:0;background:var(--bg);color:#e6eef8}
+  .wrap{
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    margin-top:7%;
+    box-sizing:border-box;
+  }
+
+  /* Center column */
+  .center-col{
+    width:420px;
+    max-width:94%;
+    text-align:center;
+  }
+
+  /* Logo + title */
+  .logo-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .logo img{width:115px;height:115px;object-fit:contain;display:block}
+  .title{
+    font-size:26px;
+    letter-spacing:6px;
+    color:#cfe0ff;
+    font-weight:600;
+  }
+
+  /* Card */
+  .card{
+    background:var(--panel);
+    border-radius:8px;
+    padding:22px;
+    box-shadow:var(--card-shadow);
+  }
+
+  .field{
+    width:100%;
+    margin:10px 0;
+  }
+  .field input{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px 12px;
+    border-radius:6px;
+    border:1px solid rgba(255,255,255,0.03);
+    background:var(--input);
+    color:#e6eef8;
+    font-size:14px;
+  }
+  .actions{
+    margin-top:12px;
+  }
+  .btn{
+    width:100%;
+    padding:11px;
+    border-radius:6px;
+    border:0;
+    background:var(--accent);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .sub-links{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .sub-links a{color:var(--muted);text-decoration:none}
+
+  /* Right-side notice box */
+  .notice{
+    position: absolute;
+    right:28px;
+    top: 40%;
+    width:320px;
+    background:linear-gradient(180deg, rgba(94, 150, 255, 0.03), rgba(0, 0, 0, 0.08));
+    border-radius:6px;
+    padding:14px;
+    border:1px solid rgba(255,255,255,0.02);
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.35;
+}
+  .notice h4{margin:0 0 8px 0;color:#dbeaff;font-size:14px}
+  .notice ol{margin:0;padding-left:18px}
+
+  /* Bottom left footer text */
+  .bottom-left{
+    position:absolute;
+    left:15px;
+    bottom:18px;
+    font-size:14px;
+    color:#e6eef8;
+    max-width:20%;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    opacity:0.9;
+}
+.bottom-left img {
+    width:35px;
+    height:35px;
+    object-fit:contain;
+    opacity:0.85;
+}
+
+/* FULL MOBILE REFERENCE-LIKE LAYOUT */
+@media (max-width: 1200px) {
+
+  html, body {
+  height: 100%;
+  }
+
+  .wrap {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 30px;
+      margin-bottom: 0px;
+      padding: 0 16px;
+      gap: 26px;
+  }
+
+  .center-col {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      margin: 0;
+      order: 1;
+  }
+
+  .logo-wrap {
+      margin-bottom: 12px;
+  }
+
+  .title {
+      margin-bottom: 6px;
+  }
+
+  .notice {
+      position: static;
+      width: 100%;
+      order: 2;
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding: 16px;
+  }
+
+  .bottom-left {
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      margin-top: 5px;
+      position: static;
+      font-size: 14px;
+      flex-direction: column;
+      order: 3;
+      gap: 3px !important;
+  }
+
+  .bottom-left img {
+      width: 32px;
+      height: 32px;
+  }
+
+  /* remove SIDE GAPS like reference */
+  .wrap > * {
+      max-width: 420px;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Right info box (can edit text as needed) -->
+    <aside class="notice" aria-label="Important notice">
+      <h4>Зверніть увагу!</h4>
+      Здійснюючи вхід у систему, Ви <b>підтверджуєте</b> наступне:
+      <ol>
+        <li>Ви усвідомлюєте, що здійснюєте доступ до закритої системи.</li>
+        <li>Використання системи може контролюватися, реєструватися та підлягати аудиту.</li>
+        <li>Несанкціоноване використання системи забороняється та несе за собою кримінальну, дисциплінарну, адміністративну та інші види відповідальності.</li>
+        <li>Факт використання системи вважається наданою згодою на моніторинг і запис Ваших дій у системі.</li>
+      </ol>
+    </aside>
+
+    <!-- Center column with logo/title/card -->
+    <main class="center-col" role="main" aria-label="Login area">
+      <div class="logo-wrap">
+        <div class="logo">
+          <img src="delta.png" alt="Logo placeholder">
+        </div>
+      </div>
+
+      <div class="title">DELTA</div>
+
+      <div style="height:14px"></div>
+
+      <div class="card" aria-hidden="false">
+        <div style="text-align:left;margin-bottom:8px;color:var(--muted);font-size:13px">Логін</div>
+        <div class="field"><input type="text" placeholder="Логін" /></div>
+
+        <div style="text-align:left;margin-bottom:8px;color:var(--muted);font-size:13px;margin-top:6px">Пароль</div>
+        <div class="field"><input type="password" placeholder="Пароль" /></div>
+
+        <div class="actions">
+          <form action="https://maps.plan-ops.fr/ViewMap/44910?t=jSxMg7v_MPfbbeC83oSnwZJTLRMheeBjZYhRwWcyrEY">
+             <button class="btn">Вхід у систему</button>
+          </form>
+        </div>
+
+        <div class="sub-links">
+          <a href="https://discord.gg/pK9dBUsQqH">Реєстрація</a>
+          <a href="https://discord.gg/pK9dBUsQqH">Забули пароль?</a>
+        </div>
+      </div>
+    </main>
+
+  </div>
+  <!-- Bottom-left text -->
+    <div class="bottom-left">
+<img src="min.png" alt="icon">
+      Цей сайт не має відношення до Міністерства оборони України та є фанатською пародією для ігрового сервера Arma 3. Будь-які інші попередження, що є на цьому сайті, стосуються гри та створені для антуражу
+    </div>
+</body>
+</html>
